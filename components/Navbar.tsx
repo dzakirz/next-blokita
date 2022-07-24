@@ -10,8 +10,8 @@ const Navbar = () => {
                     Blokita<span className="text-primary">.</span>
                 </h1>
                 <ul className="flex gap-3">
-                    <Link href="signup">
-                        <li className="font-semibold">SignIn</li>
+                    <Link href="signin">
+                        <li className="font-semibold relative hover-underline">SignIn</li>
                     </Link>
                 </ul>
                 <CgProfile size={26} className="hidden" />
