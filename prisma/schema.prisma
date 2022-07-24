@@ -9,3 +9,48 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id               String          @id @default(cuid())
+  name             String
+  password         String
+  email            String          @unique
+  role             Role            @default(USER)
+  writtenPosts     Post[]          @relation("WrittenPosts") // one user has many
+  favoritePosts    Post[]          @relation("FavoritedPosts") //one user has many
+  userPreference   UserPreference? @relation(fields: [userPreferenceId], references: [id])
+  userPreferenceId String?         @unique
+
+  @@unique([name, password]) // user cant be the same between age and name
+  @@index([email])
+}
+
+model UserPreference {
+  id           String  @id @default(cuid())
+  emailUpdates Boolean @default(false)
+  user         User? // one user has one preference
+}
+
+model Post {
+  id            String     @id @default(cuid())
+  title         String
+  averageRating Float
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  author        User       @relation("WrittenPosts", fields: [authorId], references: [id])
+  authorId      String
+  favoritedBy   User?      @relation("FavoritedPosts", fields: [favoritedById], references: [id])
+  favoritedById String?
+  categories    Category[] // many post has many category
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String @unique
+  posts Post[] // many category has many post
+}
+
+enum Role {
+  USER
+  ADMIN
+}
