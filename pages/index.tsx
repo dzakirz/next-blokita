@@ -12,7 +12,10 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="w-full h-screen flex justify-center items-center">
+            <main
+                data-theme="dark"
+                className="w-full h-screen flex justify-center items-center"
+            >
                 <Hello title="hello" />
             </main>
         </React.Fragment>
