@@ -2,6 +2,7 @@ import React from "react"
 import type { NextPage } from "next"
 import Head from "next/head"
 import Hello from "../components/Hello"
+import Navbar from "../components/Navbar"
 
 const Home: NextPage = () => {
     return (
@@ -12,11 +13,13 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main
-                data-theme="dark"
-                className="w-full h-screen flex justify-center items-center"
-            >
-                <Hello title="hello" />
+            <main data-theme="mytheme">
+                <Navbar />
+                <div className="w-full px-3">
+                    <div className="max-w-[1400px] mx-auto">
+                        <h1>content</h1>
+                    </div>
+                </div>
             </main>
         </React.Fragment>
     )
