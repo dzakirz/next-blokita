@@ -9,9 +9,14 @@ const Navbar = () => {
                 <h1 className="font-bold text-2xl">
                     Blokita<span className="text-primary">.</span>
                 </h1>
-                <ul className="flex gap-3">
-                    <Link href="signin">
-                        <li className="font-semibold relative hover-underline">SignIn</li>
+                <ul className="flex gap-5">
+                    <Link href="/">
+                        <li className="font-semibold relative hover-underline">Home</li>
+                    </Link>
+                    <Link href="/category">
+                        <li className="font-semibold relative hover-underline">
+                            Categories
+                        </li>
                     </Link>
                 </ul>
                 <CgProfile size={26} className="hidden" />
